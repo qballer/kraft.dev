@@ -26,9 +26,8 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          # Until kraft.dev points here; then set SITE_URL=https://kraft.dev and BASE_PATH=/
-          SITE_URL: https://qballer.github.io
-          BASE_PATH: /kraft.dev
+          SITE_URL: https://kraft.dev
+          BASE_PATH: /
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
