@@ -134,3 +134,7 @@ a:hover {
   color: var(--ink-2);
   filter: none;
 }
+
+[hidden] {
+  display: none !important;
+}
