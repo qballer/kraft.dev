@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
-import { joinFormEndpoint, links, site } from '../site.config';
+import { joinFormEndpoint, joinFormFields, links, site } from '../site.config';
 
 const goals = [
   ['Agentic SDLC', 'How AI agents change every step of the software lifecycle: planning, coding, review, testing and shipping.'],
@@ -175,6 +175,7 @@ const jsonLd = {
           action={joinFormEndpoint || undefined}
           method="post"
           data-endpoint={joinFormEndpoint}
+          data-fields={JSON.stringify(joinFormFields)}
         >
           {
             fields.map((f) => (
@@ -283,15 +284,13 @@ const jsonLd = {
       const label = button.textContent;
       button.disabled = true;
       button.textContent = 'Sending…';
-      const data = Object.fromEntries(inputs.map((i) => [i.name, i.value.trim()]));
+      const fields: Record<string, string> = JSON.parse(form.dataset.fields || '{}');
+      const body = new URLSearchParams();
+      for (const i of inputs) body.append(fields[i.name] ?? i.name, i.value.trim());
 
       try {
-        const res = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(data),
-        });
-        if (!res.ok) throw new Error(String(res.status));
+        // Google Forms doesn't send CORS headers, so the response is opaque; a network error still throws.
+        await fetch(endpoint, { method: 'POST', mode: 'no-cors', body });
         form.hidden = true;
         if (thanks) {
           thanks.hidden = false;

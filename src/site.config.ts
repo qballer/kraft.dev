@@ -16,8 +16,17 @@ export const links = {
 };
 
 /**
- * PLACEHOLDER: URL that receives the "Join the WhatsApp community" form.
- * The form POSTs JSON: { fullName, company, role, email, phone }. Any 2xx response counts as success.
- * Empty string = no backend yet: the submit button is disabled and the form shows "coming soon".
+ * Google Form that receives the "Join the WhatsApp community" form (responses land in Doron's Google account).
+ * Fields are posted as form-encoded entry.<id> values; empty string disables the form.
  */
-export const joinFormEndpoint: string = '';
+export const joinFormEndpoint: string =
+  'https://docs.google.com/forms/d/e/1FAIpQLSe5sxT61-_doAk1WbFjIwyykqLDFIXLXcPKSw1sX6JcfaClOg/formResponse';
+
+/** Google Form entry ids for each field of the join form. */
+export const joinFormFields: Record<string, string> = {
+  fullName: 'entry.617977784',
+  company: 'entry.1845830470',
+  role: 'entry.1896308029',
+  email: 'entry.1921723595',
+  phone: 'entry.436260838',
+};
