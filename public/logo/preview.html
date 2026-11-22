@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kraft Dev logo options</title>
+<style>
+  :root { --bg:#f4eee2; --ink:#2a2520; --muted:#6f665b; --line:#e2d9c8; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 -apple-system,"Segoe UI",Arial,sans-serif; }
+  header { padding:24px 32px 8px; }
+  h1 { font-size:20px; margin:0 0 4px; }
+  header p { margin:0; color:var(--muted); }
+  .opt { display:grid; grid-template-columns:repeat(3, 1fr); border-top:1px solid var(--line); }
+  .opt > h2 { grid-column:1 / -1; margin:0; padding:16px 32px 0; font-size:15px; }
+  .opt > h2 small { font-weight:400; color:var(--muted); margin-left:8px; }
+  .panel { padding:20px 32px 28px; display:flex; flex-direction:column; gap:18px; }
+  .panel .tag { font:11px/1 ui-monospace,Menlo,monospace; letter-spacing:.08em; text-transform:uppercase; opacity:.6; }
+  .row { display:flex; align-items:flex-end; gap:22px; flex-wrap:wrap; }
+  .row > span { display:block; }
+  .row > span > svg { display:block; height:100%; width:auto; }
+  .light { background:#f4eee2; color:#2a2520; --kd-ink:#2a2520; --kd-accent:#b5562b; --kd-paper:#f4eee2; }
+  .dark { background:#1d1a17; color:#f4eee2; --kd-ink:#f4eee2; --kd-accent:#e07a45; --kd-paper:#1d1a17; }
+  .mono { background:#ffffff; color:#000; --kd-ink:#000; --kd-accent:#000; --kd-paper:#fff; }
+  .fav { display:flex; gap:14px; align-items:center; }
+  .fav img { display:block; }
+  .tab { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:8px 8px 0 0; font:12px -apple-system,Arial,sans-serif; }
+  .light .tab { background:#dee1e6; color:#222; }
+  .dark .tab { background:#35363a; color:#eee; }
+  .mono .tab { background:#eee; color:#000; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Kraft Dev — logo directions</h1>
+  <p>Each option: lockup at 64 / 40 / 24 px tall, mark at 128 / 64 / 32 / 16 px, favicon file at 32 / 16 px. Light, dark and one-colour.</p>
+</header>
+
+<main id="options"></main>
+
+<template id="tpl">
+  <section class="opt">
+    <h2></h2>
+    <div class="panel light"></div>
+    <div class="panel dark"></div>
+    <div class="panel mono"></div>
+  </section>
+</template>
+
+<script>
+  const OPTIONS = [
+    ['a', 'A · Four tiles', 'Four themes as four tiles that lock into a K; one tile is lit.'],
+    ['b', 'B · Lit window', 'A lights-out software factory with one window still lit: the craft.'],
+    ['c', 'C · Chisel & agent', 'A K made of a chisel (hard skills) and an agent node with its two paths.'],
+  ];
+  const labels = { light: 'Light', dark: 'Dark', mono: 'One colour' };
+  const root = document.getElementById('options');
+  const tpl = document.getElementById('tpl');
+
+  const svgSpan = (src, h, vb) => {
+    const s = document.createElement('span');
+    s.style.height = h + 'px';
+    s.innerHTML = src;
+    if (vb) {
+      const svg = s.firstElementChild;
+      svg.setAttribute('viewBox', vb);
+    }
+    return s;
+  };
+
+  (async () => {
+    for (const [id, name, line] of OPTIONS) {
+      const [lockup, fav] = await Promise.all([
+        fetch(`option-${id}.svg`).then((r) => r.text()),
+        fetch(`option-${id}-favicon.svg`).then((r) => r.text()),
+      ]);
+      const node = tpl.content.cloneNode(true);
+      node.querySelector('h2').innerHTML = `${name}<small>${line}</small>`;
+      node.querySelectorAll('.panel').forEach((panel) => {
+        const theme = [...panel.classList].find((c) => c in labels);
+        panel.insertAdjacentHTML('beforeend', `<span class="tag">${labels[theme]}</span>`);
+        for (const h of [64, 40, 24]) {
+          const r = document.createElement('div');
+          r.className = 'row';
+          r.append(svgSpan(lockup, h));
+          panel.append(r);
+        }
+        const marks = document.createElement('div');
+        marks.className = 'row';
+        for (const h of [128, 64, 32, 16]) marks.append(svgSpan(lockup, h, '0 0 32.5 32.5'));
+        panel.append(marks);
+        const f = document.createElement('div');
+        f.className = 'fav';
+        f.innerHTML = `<span class="tab"><img src="option-${id}-favicon.svg" width="16" height="16" alt="">Kraft Dev</span>
+          <img src="option-${id}-favicon.svg" width="32" height="32" alt="">`;
+        panel.append(f);
+      });
+      root.append(node);
+    }
+  })();
+</script>
+</body>
+</html>

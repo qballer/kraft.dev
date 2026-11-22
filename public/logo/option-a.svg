@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 191.2 32.5" role="img" aria-label="Kraft Dev">
+  <title>Kraft Dev</title>
+  <style>
+    .kd-i{fill:var(--kd-ink,#2a2520)}.kd-is{stroke:var(--kd-ink,#2a2520)}
+    .kd-a{fill:var(--kd-accent,#b5562b)}
+    @media (prefers-color-scheme:dark){
+      .kd-i{fill:var(--kd-ink,#f4eee2)}.kd-is{stroke:var(--kd-ink,#f4eee2)}
+      .kd-a{fill:var(--kd-accent,#e07a45)}
+    }
+  </style>
+  <g transform="translate(-3.75 -3.75) scale(1.25)">
+    <rect class="kd-i" x="3" y="3" width="12" height="12"/>
+    <rect class="kd-i" x="3" y="17" width="12" height="12"/>
+    <path class="kd-a" d="M17 3H29L17 15Z"/>
+    <path class="kd-i" d="M17 17V29H29Z"/>
+  </g>
+  <g transform="translate(44 6.25)">
+    <clipPath id="kd-a-cap"><rect width="147.6" height="20"/></clipPath>
+    <g clip-path="url(#kd-a-cap)" class="kd-is" fill="none" stroke-width="3.2" stroke-linejoin="miter" stroke-miterlimit="10">
+      <path d="M1.6 -1V21M-2 15.6L13.6 -1.5"/>
+      <path stroke-linecap="round" d="M5.4 7.5L13.6 21.5"/>
+      <path transform="translate(18.1 0)" d="M1.6 21V1.6H6.6A4.75 4.75 0 0 1 6.6 11.1H1.6M6.4 11.1L12.9 21.5"/>
+      <path transform="translate(35.7 0)" d="M-0.4 21.5L7.5 -1.6L15.4 21.5M2.16 14H12.84"/>
+      <path transform="translate(55.3 0)" d="M1.6 21V1.6H11M1.6 10.2H9.4"/>
+      <path transform="translate(70.9 0)" d="M0 1.6H13M6.5 1.6V21"/>
+      <path transform="translate(95.9 0)" d="M1.6 1.6H5.2A8.3 8.3 0 0 1 5.2 18.4H1.6Z"/>
+      <path transform="translate(115 0)" d="M11 1.6H1.6V18.4H11M1.6 10H9.6"/>
+      <path transform="translate(130.6 0)" d="M-0.4 -1.5L7.5 21.6L15.4 -1.5"/>
+    </g>
+    <rect class="kd-a" x="88.3" y="8.4" width="3.2" height="3.2"/>
+  </g>
+</svg>

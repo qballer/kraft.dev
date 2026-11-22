@@ -1,0 +1,19 @@
+---
+// Logo option A (four tiles). Source of truth: public/logo/option-a.svg.
+// Inlined so it follows the page's colours via --kd-ink / --kd-accent.
+import svg from '../../public/logo/option-a.svg?raw';
+---
+
+<span class="logo" set:html={svg} />
+
+<style>
+  .logo {
+    display: inline-block;
+    block-size: var(--logo-h, 28px);
+  }
+  .logo :global(svg) {
+    display: block;
+    block-size: 100%;
+    inline-size: auto;
+  }
+</style>

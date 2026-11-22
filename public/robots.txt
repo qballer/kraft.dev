@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kraft.dev/sitemap-index.xml
