@@ -18,7 +18,7 @@ const svg = `
   <rect width="1200" height="630" fill="#0e1014"/>
   <rect x="0" y="622" width="1200" height="8" fill="#ff6a2b"/>
   <g transform="translate(80 80) scale(2.6)">${logo}</g>
-  <text x="80" y="330" font-family="Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#eceef2">Engineering craft in the</text>
+  <text x="80" y="330" font-family="Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#eceef2">Engineering Kraft in the</text>
   <text x="80" y="415" font-family="Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#eceef2">age of AI agents.</text>
   <text x="80" y="530" font-family="Menlo, 'Courier New', monospace" font-size="26" letter-spacing="3" fill="#ff6a2b">MEETUP #1 · 9 DEC 2026 · HIBOB, TEL AVIV</text>
 </svg>`;

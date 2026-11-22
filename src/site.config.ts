@@ -5,7 +5,7 @@
 export const site = {
   name: 'Kraft Dev',
   url: 'https://kraft.dev',
-  tagline: 'Engineering craft in the age of AI agents',
+  tagline: 'Engineering Kraft in the age of AI agents',
   description:
     'Kraft Dev is a monthly in-person meetup in Tel Aviv for engineers, engineering leaders and product builders: engineering craft in the age of AI agents.',
 } as const;
