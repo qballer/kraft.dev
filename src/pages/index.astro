@@ -11,10 +11,10 @@ const goals = [
 ] as const;
 
 const agenda = [
-  ['18:00', 'Doors open, pizza & drinks'],
-  ['18:45', 'Welcome to Kraft Dev'],
-  ['19:00', 'Talks'],
-  ['After', 'Sufganiyot and conversation'],
+  ['17:00', 'Doors open, food, drinks & mingling'],
+  ['17:45', 'Three talks'],
+  ['19:25', 'Sufganiyot and mingling'],
+  ['20:00', 'Wrap-up'],
 ] as const;
 
 const talks = [
@@ -22,8 +22,6 @@ const talks = [
     speaker: 'Ariel Kaspit',
     role: 'AIOps Engineer, HiBob',
     title: 'Who Runs The Factory?',
-    abstract:
-      'Software factories are great. But their agents need what any production system needs: infrastructure, security, authentication and observability. We build them once in a shared cloud agent platform, instead of rebuilding them in every agent.',
   },
   {
     speaker: 'Doron Tsur',
@@ -34,8 +32,6 @@ const talks = [
     speaker: 'Benjamin Gruenbaum',
     role: 'Founding developer at Eon, Node.js core maintainer',
     title: 'Graph Engineering in Reverse',
-    abstract:
-      'Graph Engineering involves creating knowledge and task graphs. Building a good knowledge graph takes entity extraction, data parsing, noise elimination and graph algorithms. It turns out that if we start with a really good knowledge graph and do everything a company brain does in reverse, we get a really good synthetic company with clones (twins) of all the common connectors we need. The missing piece was being able to tap into Eon’s exabyte-scale backup for metadata.',
   },
 ];
 
@@ -46,8 +42,8 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Event',
   name: 'Kraft Dev #1: Engineering Craft in the Age of AI Agents',
-  startDate: '2026-12-09T18:00:00+02:00',
-  endDate: '2026-12-09T21:30:00+02:00',
+  startDate: '2026-12-09T17:00:00+02:00',
+  endDate: '2026-12-09T20:00:00+02:00',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   eventStatus: 'https://schema.org/EventScheduled',
   isAccessibleForFree: true,
@@ -130,7 +126,6 @@ const jsonLd = {
                 {t.role && <span class="role"> · {t.role}</span>}
               </p>
               <h4>{t.title}</h4>
-              {t.abstract && <p class="abstract">{t.abstract}</p>}
             </li>
           ))
         }
@@ -288,11 +283,6 @@ const jsonLd = {
     margin: 0 0 0.4rem;
     font-size: 1.15rem;
     line-height: 1.3;
-  }
-  .abstract {
-    margin: 0;
-    color: var(--ink-2);
-    font-size: 0.97rem;
   }
   .foot {
     margin-block-start: 2rem;
