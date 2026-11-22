@@ -1,0 +1,29 @@
+# Kraft Dev
+
+> Kraft Dev is a monthly, in-person meetup in Tel Aviv for engineers, engineering leaders and product builders, about engineering Kraft in the age of AI agents. "Kraft" is spelled with a K on purpose.
+
+Topics: Agentic SDLC (AI agents across the software lifecycle), Dark Factories (lights-out, mostly autonomous software production), AI agents inside the product (architecture, evals, reliability, cost), and where hard engineering skills still matter.
+
+## Next meetup: Kraft Dev #1
+
+- Date: Wednesday 9 December 2026, 17:00–20:00 (Israel time, UTC+2)
+- Venue: HiBob offices, Derech Menachem Begin 148, Tel Aviv, Israel (bring ID for building security)
+- Entry: free, limited spots, registration requires approval
+- Registration: https://luma.com/mbvm63vq
+- Agenda: 17:00 doors, food, drinks and mingling · 17:45 Ariel Kaspit · 18:20 Doron Tsur · 18:55 Benjamin Gruenbaum · 19:25 wrap-up
+
+## Talks
+
+- [Who Runs The Factory?](https://www.linkedin.com/in/ariel-kaspit-79b908196/): Ariel Kaspit, AIOps Engineer at HiBob
+- [Turning Lights in the Dark: Harness Engineering, Verification & Missing Evidence Layer](https://www.linkedin.com/in/doron-tsur): Doron Tsur, Platform & Distributed Systems Architect, founder of Kraft Dev
+- [Graph Engineering in Reverse](https://github.com/benjamingr): Benjamin Gruenbaum, founding developer at Eon and Node.js core maintainer
+
+## Links
+
+- [Website](https://kraft.dev/): meetup details and the form to join the WhatsApp community
+- [Full page as markdown](https://kraft.dev/index.md)
+- [Register on Luma](https://luma.com/mbvm63vq)
+
+## Optional
+
+- Hosted by HiBob. Organised by Doron Tsur.

@@ -34,6 +34,7 @@ const ogImage = new URL(`${base}og.png`, Astro.site);
     }
     <meta name="description" content={site.description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="text/markdown" href={`${base}index.md`} title="Kraft Dev (markdown)" />
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
     <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)" />

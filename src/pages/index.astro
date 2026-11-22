@@ -64,18 +64,36 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Event',
   name: 'Kraft Dev #1: Engineering Kraft in the Age of AI Agents',
+  description:
+    'Monthly in-person meetup in Tel Aviv for engineers, engineering leaders and product builders: Agentic SDLC, Dark Factories, AI agents in the product, and the hard skills that still matter.',
   startDate: '2026-12-09T17:00:00+02:00',
   endDate: '2026-12-09T20:00:00+02:00',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   eventStatus: 'https://schema.org/EventScheduled',
   isAccessibleForFree: true,
+  image: new URL(`${base}og.png`, Astro.site).href,
   location: {
     '@type': 'Place',
     name: 'HiBob',
-    address: 'Derech Menachem Begin 148, Tel Aviv, Israel',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Derech Menachem Begin 148',
+      addressLocality: 'Tel Aviv',
+      addressCountry: 'IL',
+    },
   },
-  organizer: { '@type': 'Organization', name: site.name, url: site.url },
-  ...(links.luma ? { url: links.luma } : {}),
+  organizer: { '@type': 'Organization', name: site.name, url: site.url, logo: new URL(`${base}favicon.svg`, Astro.site).href },
+  performer: talks.map((t) => ({ '@type': 'Person', name: t.speaker, jobTitle: t.role, sameAs: t.url })),
+  subEvent: talks.map((t) => ({
+    '@type': 'Event',
+    name: t.title,
+    startDate: `2026-12-09T${t.time}:00+02:00`,
+    performer: { '@type': 'Person', name: t.speaker },
+    location: { '@type': 'Place', name: 'HiBob', address: 'Derech Menachem Begin 148, Tel Aviv, Israel' },
+  })),
+  ...(links.luma
+    ? { url: links.luma, offers: { '@type': 'Offer', price: 0, priceCurrency: 'ILS', availability: 'https://schema.org/InStock', url: links.luma } }
+    : {}),
 };
 ---
 
