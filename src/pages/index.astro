@@ -18,13 +18,15 @@ const agenda = [
   ['19:25', 'Wrap-up'],
 ] as const;
 
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+
 const talks = [
   {
     time: '17:45',
     speaker: 'Ariel Kaspit',
     role: 'AIOps Engineer, HiBob',
     title: 'Who Runs The Factory?',
-    photo: '/speakers/ariel.jpg',
+    photo: `${base}speakers/ariel.jpg`,
     url: 'https://www.linkedin.com/in/ariel-kaspit-79b908196/',
     site: 'LinkedIn',
   },
@@ -33,7 +35,7 @@ const talks = [
     speaker: 'Doron Tsur',
     role: 'Platform & Distributed Systems Architect',
     title: 'Turning Lights in the Dark: Harness Engineering, Verification & Missing Evidence Layer',
-    photo: '/speakers/doron.jpg',
+    photo: `${base}speakers/doron.jpg`,
     url: 'https://www.linkedin.com/in/doron-tsur',
     site: 'LinkedIn',
   },
@@ -42,7 +44,7 @@ const talks = [
     speaker: 'Benjamin Gruenbaum',
     role: 'Founding developer at Eon, Node.js core maintainer',
     title: 'Graph Engineering in Reverse',
-    photo: '/speakers/benji.jpg',
+    photo: `${base}speakers/benji.jpg`,
     url: 'https://github.com/benjamingr',
     site: 'GitHub',
   },
@@ -79,7 +81,7 @@ const jsonLd = {
 
 <Base jsonLd={jsonLd}>
   <header class="top wrap">
-    <a href="/" aria-label="Kraft Dev, home"><Logo /></a>
+    <a href={base} aria-label="Kraft Dev, home"><Logo /></a>
     <a class="top-cta" href="#join">Join the community</a>
   </header>
 
