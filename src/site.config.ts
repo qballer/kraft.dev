@@ -30,3 +30,6 @@ export const joinFormFields: Record<string, string> = {
   email: 'entry.1921723595',
   phone: 'entry.436260838',
 };
+
+/** Google Analytics 4 measurement id (G-XXXXXXXXXX). Empty string = no analytics loaded. */
+export const gaMeasurementId: string = '';

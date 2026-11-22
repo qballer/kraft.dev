@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { site } from '../site.config';
+import { gaMeasurementId, site } from '../site.config';
 
 interface Props {
   jsonLd?: Record<string, unknown>;
@@ -18,6 +18,19 @@ const ogImage = new URL(`${base}og.png`, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    {
+      gaMeasurementId && (
+        <>
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} />
+          <script is:inline define:vars={{ gaMeasurementId }}>
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () { dataLayer.push(arguments); };
+            gtag('js', new Date());
+            gtag('config', gaMeasurementId);
+          </script>
+        </>
+      )
+    }
     <meta name="description" content={site.description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />

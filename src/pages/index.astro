@@ -294,6 +294,7 @@ const jsonLd = {
         form.hidden = true;
         if (thanks) {
           thanks.hidden = false;
+          (window as any).gtag?.('event', 'join_community');
           thanks.focus();
         }
       } catch {
