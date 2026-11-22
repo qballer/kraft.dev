@@ -11,7 +11,7 @@ export const site = {
 } as const;
 
 export const links = {
-  /** Luma event page for meetup #1. Used only in event metadata (JSON-LD); the site shows no register button. */
+  /** Luma event page for meetup #1: the meetup section's register link. */
   luma: 'https://luma.com/mbvm63vq' as string | null,
 };
 

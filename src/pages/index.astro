@@ -58,7 +58,6 @@ const fields = [
 ] as const;
 
 const venue = 'HiBob offices, Derech Menachem Begin 148, Tel Aviv';
-const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('HiBob, Derech Menachem Begin 148, Tel Aviv');
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -129,9 +128,10 @@ const jsonLd = {
         </ul>
         <dl class="facts">
           <div><dt>When</dt><dd>Wednesday 9 December 2026, 17:00–20:00</dd></div>
-          <div><dt>Where</dt><dd><a href={mapUrl}>{venue}</a></dd></div>
-          <div><dt>Entry</dt><dd>Free, limited spots</dd></div>
+          <div><dt>Where</dt><dd>{venue}</dd></div>
+          <div><dt>Entry</dt><dd>Free, limited spots, approval required</dd></div>
         </dl>
+        {links.luma && <p class="register"><a class="btn" href={links.luma}>Register on Luma</a></p>}
       </div>
 
       <h3 class="talks-h">Speakers</h3>
@@ -400,6 +400,9 @@ const jsonLd = {
     font-family: var(--mono);
     color: var(--accent-text);
     min-inline-size: 3.5rem;
+  }
+  .register {
+    margin: 1.25rem 0 0;
   }
   .facts {
     margin: 0;
