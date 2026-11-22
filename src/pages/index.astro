@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Logo from '../components/Logo.astro';
-import { links, site } from '../site.config';
+import { joinFormEndpoint, links, site } from '../site.config';
 
 const goals = [
   ['Agentic SDLC', 'How AI agents change every step of the software lifecycle: planning, coding, review, testing and shipping.'],
@@ -12,28 +12,50 @@ const goals = [
 
 const agenda = [
   ['17:00', 'Doors open, food, drinks & mingling'],
-  ['17:45', 'Talks: Ariel Kaspit, Benjamin Gruenbaum, Doron Tsur'],
+  ['17:45', 'Talk: Ariel Kaspit'],
+  ['18:20', 'Talk: Doron Tsur'],
+  ['18:55', 'Talk: Benjamin Gruenbaum'],
   ['19:25', 'Mingling'],
   ['20:00', 'Wrap-up'],
 ] as const;
 
 const talks = [
   {
+    time: '17:45',
     speaker: 'Ariel Kaspit',
     role: 'AIOps Engineer, HiBob',
     title: 'Who Runs The Factory?',
+    photo: '/speakers/ariel.jpg',
+    url: 'https://www.linkedin.com/in/ariel-kaspit-79b908196/',
+    site: 'LinkedIn',
   },
   {
+    time: '18:20',
     speaker: 'Doron Tsur',
-    url: 'https://yay.dev/',
+    role: 'Platform & Distributed Systems Architect',
     title: 'Turning Lights in the Dark: Harness Engineering, Verification & Missing Evidence Layer',
+    photo: '/speakers/doron.jpg',
+    url: 'https://www.linkedin.com/in/doron-tsur',
+    site: 'LinkedIn',
   },
   {
+    time: '18:55',
     speaker: 'Benjamin Gruenbaum',
     role: 'Founding developer at Eon, Node.js core maintainer',
     title: 'Graph Engineering in Reverse',
+    photo: '/speakers/benji.jpg',
+    url: 'https://github.com/benjamingr',
+    site: 'GitHub',
   },
 ];
+
+const fields = [
+  { name: 'fullName', label: 'Full name', type: 'text', autocomplete: 'name', wide: true },
+  { name: 'company', label: 'Company', type: 'text', autocomplete: 'organization' },
+  { name: 'role', label: 'Role', type: 'text', autocomplete: 'organization-title' },
+  { name: 'email', label: 'Email', type: 'email', autocomplete: 'email', inputmode: 'email' },
+  { name: 'phone', label: 'Phone number', type: 'tel', autocomplete: 'tel', inputmode: 'tel', hint: 'For the WhatsApp invite, e.g. +972 50 123 4567' },
+] as const;
 
 const venue = 'HiBob offices, Derech Menachem Begin 148, Tel Aviv';
 const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('HiBob, Derech Menachem Begin 148, Tel Aviv');
@@ -60,7 +82,7 @@ const jsonLd = {
 <Base jsonLd={jsonLd}>
   <header class="top wrap">
     <a href="/" aria-label="Kraft Dev, home"><Logo /></a>
-    {links.luma && <a class="top-cta" href={links.luma}>Register</a>}
+    <a class="top-cta" href="#join">Join the community</a>
   </header>
 
   <main>
@@ -71,6 +93,7 @@ const jsonLd = {
         Kraft Dev is a monthly in-person meetup in Tel Aviv for engineers, engineering leaders and product
         builders.
       </p>
+      <a class="btn" href="#join">Join the WhatsApp community</a>
     </section>
 
     <section class="wrap block" aria-labelledby="goals-h">
@@ -91,7 +114,7 @@ const jsonLd = {
     <section class="wrap block" id="meetup-1" aria-labelledby="m1-h">
       <p class="label">Meetup #1</p>
       <h2 id="m1-h">Wednesday 9 December 2026</h2>
-      <p class="when">6th night of Hanukkah · <a href={mapUrl}>{venue}</a></p>
+      <p class="when">17:00–20:00 · 6th night of Hanukkah · HiBob, Tel Aviv</p>
 
       <div class="event">
         <ul class="agenda">
@@ -104,16 +127,11 @@ const jsonLd = {
             ))
           }
         </ul>
-        <div class="register">
-          <p><strong>Free, limited spots.</strong> Registration requires approval.</p>
-          {
-            links.luma ? (
-              <a class="btn" href={links.luma}>Register on Luma</a>
-            ) : (
-              <span class="btn btn--soon" aria-disabled="true">Registration opens soon</span>
-            )
-          }
-        </div>
+        <dl class="facts">
+          <div><dt>When</dt><dd>Wednesday 9 December 2026, 17:00–20:00</dd></div>
+          <div><dt>Where</dt><dd><a href={mapUrl}>{venue}</a></dd></div>
+          <div><dt>Entry</dt><dd>Free, limited spots</dd></div>
+        </dl>
       </div>
 
       <h3 class="talks-h">Speakers</h3>
@@ -121,33 +139,172 @@ const jsonLd = {
         {
           talks.map((t) => (
             <li>
-              <p class="speaker">
-                {t.url ? <a href={t.url}>{t.speaker}</a> : t.speaker}
-                {t.role && <span class="role"> · {t.role}</span>}
-              </p>
-              <h4>{t.title}</h4>
+              <div class="who">
+                <img src={t.photo} alt="" width="400" height="400" loading="lazy" decoding="async" />
+                <div>
+                  <p class="speaker">{t.speaker}</p>
+                  <p class="role">{t.role}</p>
+                </div>
+              </div>
+              <div>
+                <p class="slot">{t.time}</p>
+                <h4>{t.title}</h4>
+              </div>
+              <a class="profile" href={t.url} rel="noopener" aria-label={`${t.speaker} on ${t.site}`}>
+                {t.site} <span aria-hidden="true">↗</span>
+              </a>
             </li>
           ))
         }
       </ul>
     </section>
+
+    <section class="wrap block join" id="join" aria-labelledby="join-h">
+      <div class="join-intro">
+        <p class="label">Community</p>
+        <h2 id="join-h">Join the WhatsApp community</h2>
+        <p>Get meetup announcements, talk calls and the conversation between meetups.</p>
+        <p class="privacy">We use these details only to manage the Kraft Dev community.</p>
+      </div>
+
+      <div class="join-box">
+        <form
+          id="join-form"
+          class="join-form"
+          action={joinFormEndpoint || undefined}
+          method="post"
+          data-endpoint={joinFormEndpoint}
+        >
+          {
+            fields.map((f) => (
+              <div class:list={['field', { 'field--wide': 'wide' in f && f.wide }]}>
+                <label for={`f-${f.name}`}>{f.label}</label>
+                {'hint' in f && <p class="hint" id={`f-${f.name}-hint`}>{f.hint}</p>}
+                <input
+                  id={`f-${f.name}`}
+                  name={f.name}
+                  type={f.type}
+                  autocomplete={f.autocomplete}
+                  inputmode={'inputmode' in f ? f.inputmode : undefined}
+                  required
+                  aria-describedby={`${'hint' in f ? `f-${f.name}-hint ` : ''}f-${f.name}-err`}
+                />
+                <p class="err" id={`f-${f.name}-err`} />
+              </div>
+            ))
+          }
+          <div class="field--wide submit-row">
+            <button class="btn" type="submit" disabled={!joinFormEndpoint} aria-describedby="join-note">
+              Join the community
+            </button>
+            <p class="note" id="join-note">
+              {joinFormEndpoint ? 'All fields are required.' : 'Coming soon: sign-ups open shortly.'}
+            </p>
+          </div>
+          <p class="form-err field--wide" id="join-form-err" role="alert" />
+        </form>
+        <p class="thanks" id="join-thanks" role="status" tabindex="-1" hidden>
+          Thanks! We'll send you the WhatsApp invite.
+        </p>
+      </div>
+    </section>
   </main>
 
   <footer class="foot">
     <div class="wrap foot-in">
-      <p>
-        {
-          links.whatsapp ? (
-            <a href={links.whatsapp}>Join the Kraft Dev WhatsApp community</a>
-          ) : (
-            <span>WhatsApp community: link coming soon</span>
-          )
-        }
-      </p>
+      <p><a href="#join">Join the Kraft Dev WhatsApp community</a></p>
       <p class="muted">Meetup #1 is hosted by HiBob · kraft.dev</p>
     </div>
   </footer>
 </Base>
+
+<script>
+  const form = document.getElementById('join-form') as HTMLFormElement | null;
+  const thanks = document.getElementById('join-thanks');
+  const formErr = document.getElementById('join-form-err');
+  const endpoint = form?.dataset.endpoint ?? '';
+
+  const required: Record<string, string> = {
+    fullName: 'Please enter your full name.',
+    company: 'Please enter your company.',
+    role: 'Please enter your role.',
+    email: 'Please enter your email.',
+    phone: 'Please enter your phone number.',
+  };
+
+  function problem(input: HTMLInputElement): string {
+    const v = input.value.trim();
+    if (!v) return required[input.name] ?? 'This field is required.';
+    if (input.name === 'email' && (input.validity.typeMismatch || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)))
+      return 'Please enter a valid email, like name@company.com.';
+    if (input.name === 'phone') {
+      const digits = v.replace(/\D/g, '').length;
+      if (!/^\+?[\d\s\-().]+$/.test(v) || digits < 7 || digits > 15)
+        return 'Please enter a valid phone number, like +972 50 123 4567.';
+    }
+    return '';
+  }
+
+  function check(input: HTMLInputElement): boolean {
+    const msg = problem(input);
+    const err = document.getElementById(`${input.id}-err`);
+    if (err) err.textContent = msg;
+    if (msg) input.setAttribute('aria-invalid', 'true');
+    else input.removeAttribute('aria-invalid');
+    return !msg;
+  }
+
+  if (form) {
+    // JS takes over validation; without JS the browser's native `required` checks still apply.
+    form.noValidate = true;
+    const inputs = Array.from(form.querySelectorAll('input'));
+
+    for (const input of inputs) {
+      input.addEventListener('blur', () => {
+        if (input.value.trim() || input.dataset.touched) check(input);
+        input.dataset.touched = '1';
+      });
+      input.addEventListener('input', () => {
+        if (input.getAttribute('aria-invalid')) check(input);
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (formErr) formErr.textContent = '';
+      const bad = inputs.filter((i) => !check(i));
+      if (bad.length) {
+        bad[0].focus();
+        return;
+      }
+      if (!endpoint) return;
+
+      const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const label = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      const data = Object.fromEntries(inputs.map((i) => [i.name, i.value.trim()]));
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.hidden = true;
+        if (thanks) {
+          thanks.hidden = false;
+          thanks.focus();
+        }
+      } catch {
+        if (formErr) formErr.textContent = 'Something went wrong. Please try again in a moment.';
+        button.disabled = false;
+        button.textContent = label;
+      }
+    });
+  }
+</script>
 
 <style>
   .top {
@@ -166,10 +323,10 @@ const jsonLd = {
     padding: 0.6em 1em;
     border: 1.5px solid var(--ink);
     border-radius: var(--radius);
+    white-space: nowrap;
   }
   .top-cta:hover {
     border-color: var(--accent);
-    color: var(--accent);
   }
   .hero {
     padding-block: clamp(2.5rem, 9vw, 6rem) clamp(2rem, 6vw, 4rem);
@@ -181,6 +338,7 @@ const jsonLd = {
     font-size: clamp(1.1rem, 2.2vw, 1.3rem);
     color: var(--ink-2);
     max-width: 44ch;
+    margin-block-end: 1.75rem;
   }
   .block {
     padding-block: clamp(2rem, 6vw, 3.5rem);
@@ -240,19 +398,30 @@ const jsonLd = {
   }
   .time {
     font-family: var(--mono);
-    color: var(--accent);
+    color: var(--accent-text);
     min-inline-size: 3.5rem;
   }
-  .register {
-    padding: 1.25rem;
+  .facts {
+    margin: 0;
+    padding: 0.4rem 1.25rem;
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius);
   }
-  .btn--soon {
-    background: transparent;
+  .facts div {
+    padding-block: 0.75rem;
+  }
+  .facts div + div {
+    border-block-start: 1px solid var(--line);
+  }
+  .facts dt {
+    font: 500 0.75rem/1.4 var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--ink-2);
-    border: 1.5px dashed var(--ink-2);
+  }
+  .facts dd {
+    margin: 0.15rem 0 0;
   }
   .talks-h {
     font-size: 1.4rem;
@@ -262,27 +431,176 @@ const jsonLd = {
     margin: 1rem 0 0;
     padding: 0;
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1rem;
   }
   .talks li {
-    padding: 1.2rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.3rem;
     border: 1px solid var(--line);
-    border-inline-start: 3px solid var(--accent);
+    border-block-start: 3px solid var(--accent);
     border-radius: var(--radius);
     background: var(--surface);
   }
+  .who {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .who img {
+    flex: none;
+    inline-size: 72px;
+    block-size: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--line);
+  }
   .speaker {
-    margin: 0 0 0.3rem;
+    margin: 0;
     font-weight: 650;
+    line-height: 1.3;
   }
   .role {
-    font-weight: 400;
+    margin: 0.15rem 0 0;
     color: var(--ink-2);
+    font-size: 0.92rem;
+    line-height: 1.35;
   }
   .talks h4 {
-    margin: 0 0 0.4rem;
+    margin: 0;
     font-size: 1.15rem;
     line-height: 1.3;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .slot {
+    margin: 0 0 0.25rem;
+    font: 500 0.85rem/1.4 var(--mono);
+    color: var(--accent-text);
+  }
+  .profile {
+    margin-block-start: auto;
+    align-self: flex-start;
+    font: 500 0.85rem/1.4 var(--mono);
+    color: var(--accent-text);
+    text-decoration: none;
+  }
+  .profile:hover {
+    text-decoration: underline;
+  }
+  .join {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 1.5rem 3rem;
+    align-items: start;
+  }
+  @media (max-width: 800px) {
+    .join {
+      grid-template-columns: 1fr;
+    }
+  }
+  .join-intro p:not(.label) {
+    color: var(--ink-2);
+    max-width: 38ch;
+  }
+  .privacy {
+    font-size: 0.9rem;
+  }
+  .join-box {
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-block-start: 3px solid var(--accent);
+    border-radius: var(--radius);
+  }
+  .join-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1rem;
+  }
+  @media (max-width: 520px) {
+    .join-form {
+      grid-template-columns: 1fr;
+    }
+  }
+  .field--wide {
+    grid-column: 1 / -1;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+  }
+  .field label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-block-end: 0.35rem;
+  }
+  .hint {
+    order: 2;
+    margin: 0.35rem 0 0;
+    font-size: 0.85rem;
+    color: var(--ink-2);
+  }
+  .field input {
+    font: inherit;
+    font-size: 1rem;
+    min-block-size: 48px;
+    padding: 0.6rem 0.8rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    inline-size: 100%;
+  }
+  .field input:hover {
+    border-color: var(--ink-2);
+  }
+  .field input:focus-visible {
+    outline: 3px solid var(--accent-text);
+    outline-offset: 1px;
+    border-color: var(--ink);
+  }
+  .field input[aria-invalid='true'] {
+    border-color: var(--danger);
+  }
+  .err {
+    order: 3;
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--danger);
+  }
+  .err:not(:empty) {
+    margin-block-start: 0.35rem;
+  }
+  .submit-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    margin-block-start: 0.5rem;
+  }
+  .note {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--ink-2);
+  }
+  .form-err {
+    margin: 0;
+    color: var(--danger);
+  }
+  .form-err:empty {
+    display: none;
+  }
+  .thanks {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+  .thanks:focus {
+    outline: none;
   }
   .foot {
     margin-block-start: 2rem;

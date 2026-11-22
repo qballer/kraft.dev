@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 191.2 32.5" role="img" aria-label="Kraft Dev">
   <title>Kraft Dev</title>
   <style>
-    .kd-i{fill:var(--kd-ink,#2a2520)}.kd-is{stroke:var(--kd-ink,#2a2520)}
-    .kd-a{fill:var(--kd-accent,#b5562b)}
+    .kd-i{fill:var(--kd-ink,#14161b)}.kd-is{stroke:var(--kd-ink,#14161b)}
+    .kd-a{fill:var(--kd-accent,#ff5a1f)}
     @media (prefers-color-scheme:dark){
-      .kd-i{fill:var(--kd-ink,#f4eee2)}.kd-is{stroke:var(--kd-ink,#f4eee2)}
-      .kd-a{fill:var(--kd-accent,#e07a45)}
+      .kd-i{fill:var(--kd-ink,#eceef2)}.kd-is{stroke:var(--kd-ink,#eceef2)}
+      .kd-a{fill:var(--kd-accent,#ff6a2b)}
     }
   </style>
   <g transform="translate(-3.75 -3.75) scale(1.25)">

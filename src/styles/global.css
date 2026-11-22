@@ -1,14 +1,17 @@
-/* Kraft Dev. Light = cream paper; dark = the factory after hours. */
+/* Kraft Dev. Light = cool off-white; dark = the factory after hours. Ember accent = a lit window. */
 
 :root {
   color-scheme: light dark;
-  --paper: #f4eee2;
-  --surface: #fbf7ef;
-  --ink: #2a2520;
-  --ink-2: #6f665b;
-  --line: #e2d9c8;
-  --accent: #b5562b;
-  --on-accent: #fff8f0;
+  --paper: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #14161b;
+  --ink-2: #565c67;
+  --line: #e2e4e9;
+  /* --accent is for fills and marks; --accent-text passes AA as text on paper/surface. */
+  --accent: #ff5a1f;
+  --accent-text: #c43d0c;
+  --on-accent: #14161b;
+  --danger: #c32a1c;
 
   --kd-ink: var(--ink);
   --kd-accent: var(--accent);
@@ -22,13 +25,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #1d1a17;
-    --surface: #26221e;
-    --ink: #f4eee2;
-    --ink-2: #b4a998;
-    --line: #3a342d;
-    --accent: #e07a45;
-    --on-accent: #1d1a17;
+    --paper: #0e1014;
+    --surface: #171a20;
+    --ink: #eceef2;
+    --ink-2: #9ba2ae;
+    --line: #2a2e37;
+    --accent: #ff6a2b;
+    --accent-text: #ff6a2b;
+    --on-accent: #0e1014;
+    --danger: #ff7b6b;
   }
 }
 
@@ -87,7 +92,7 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--accent-text);
   outline-offset: 3px;
 }
 
@@ -116,6 +121,16 @@ a:hover {
   background: var(--accent);
   border-radius: var(--radius);
 }
+.btn {
+  border: 0;
+  cursor: pointer;
+}
 .btn:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.06);
+}
+.btn:disabled {
+  cursor: not-allowed;
+  background: var(--line);
+  color: var(--ink-2);
+  filter: none;
 }

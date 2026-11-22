@@ -11,8 +11,13 @@ export const site = {
 } as const;
 
 export const links = {
-  /** Luma event page for meetup #1 (registration requires approval). */
+  /** Luma event page for meetup #1. Used only in event metadata (JSON-LD); the site shows no register button. */
   luma: 'https://luma.com/mbvm63vq' as string | null,
-  /** PLACEHOLDER: WhatsApp community invite link, e.g. https://chat.whatsapp.com/XXXX */
-  whatsapp: null as string | null,
 };
+
+/**
+ * PLACEHOLDER: URL that receives the "Join the WhatsApp community" form.
+ * The form POSTs JSON: { fullName, company, role, email, phone }. Any 2xx response counts as success.
+ * Empty string = no backend yet: the submit button is disabled and the form shows "coming soon".
+ */
+export const joinFormEndpoint: string = '';
