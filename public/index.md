@@ -13,7 +13,7 @@ Kraft Dev is a monthly, in-person meetup in Tel Aviv for engineers, engineering 
 
 - **When:** Wednesday 9 December 2026, 17:00–20:00 (Israel time), 6th night of Hanukkah
 - **Where:** HiBob offices, Derech Menachem Begin 148, Tel Aviv
-- **Entry:** free, limited spots, approval required
+- **Entry:** free, open registration, limited spots
 - **Register:** https://luma.com/mbvm63vq
 
 ### Agenda
