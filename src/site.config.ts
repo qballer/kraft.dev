@@ -31,5 +31,5 @@ export const joinFormFields: Record<string, string> = {
   phone: 'entry.436260838',
 };
 
-/** Google Analytics 4 measurement id (G-XXXXXXXXXX). Empty string = no analytics loaded. */
-export const gaMeasurementId: string = '';
+/** Google Tag Manager container id (GA4 is configured inside GTM). Empty string = nothing loaded. */
+export const gtmContainerId: string = 'GTM-WX9PVFV8';
