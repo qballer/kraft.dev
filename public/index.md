@@ -29,7 +29,7 @@ Kraft Dev is a monthly, in-person meetup in Tel Aviv for engineers, engineering 
 ### Speakers
 
 - **Ariel Kaspit**, AIOps Engineer, HiBob: *Who Runs The Factory?* ([LinkedIn](https://www.linkedin.com/in/ariel-kaspit-79b908196/))
-- **Doron Tsur**, Platform & Distributed Systems Architect: *Turning Lights in the Dark: Harness Engineering, Verification & Missing Evidence Layer* ([LinkedIn](https://www.linkedin.com/in/doron-tsur))
+- **Doron Tsur**, Platform & Distributed Systems Architect, Partner at Codo: *Turning Lights in the Dark: Harness Engineering, Verification & Missing Evidence Layer* ([LinkedIn](https://www.linkedin.com/in/doron-tsur))
 - **Benjamin Gruenbaum**, Founding developer at Eon, Node.js core maintainer: *Graph Engineering in Reverse* ([GitHub](https://github.com/benjamingr))
 
 ## Join the WhatsApp community

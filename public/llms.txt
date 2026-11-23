@@ -15,7 +15,7 @@ Topics: Agentic SDLC (AI agents across the software lifecycle), Dark Factories (
 ## Talks
 
 - [Who Runs The Factory?](https://www.linkedin.com/in/ariel-kaspit-79b908196/): Ariel Kaspit, AIOps Engineer at HiBob
-- [Turning Lights in the Dark: Harness Engineering, Verification & Missing Evidence Layer](https://www.linkedin.com/in/doron-tsur): Doron Tsur, Platform & Distributed Systems Architect, founder of Kraft Dev
+- [Turning Lights in the Dark: Harness Engineering, Verification & Missing Evidence Layer](https://www.linkedin.com/in/doron-tsur): Doron Tsur, Platform & Distributed Systems Architect, Partner at Codo, founder of Kraft Dev
 - [Graph Engineering in Reverse](https://github.com/benjamingr): Benjamin Gruenbaum, founding developer at Eon and Node.js core maintainer
 
 ## Links
